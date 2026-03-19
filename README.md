@@ -3,6 +3,10 @@
 This repository contains automated setup scripts to deploy a complete CI/CD pipeline using **Red Hat OpenShift Pipelines (Tekton)** and **OpenShift GitOps (ArgoCD)**.
 
 ## Architecture Overview
+The following diagram illustrates the complete CI/CD flow automated by these scripts.
+
+![CI/CD Architecture Flow](architecture.png)
+
 * **CI (Continuous Integration):** Triggered by `setup-ci.sh`. Clones the source code, generates a dynamic image tag based on the commit SHA, validates image immutability, builds the container using Buildah, and updates the GitOps repository.
 * **CD (Continuous Deployment):** Managed by ArgoCD (`install-cd.sh` and `setup-cd.sh`). Automatically synchronizes the Kubernetes manifests from the GitOps repository to the target namespace.
 
